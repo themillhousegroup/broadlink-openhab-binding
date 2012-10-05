@@ -23,7 +23,7 @@ and specifying default values can quickly double the size of a method:
     
 By contrast, here's the varargosy version:
 
-    public void frobulateFooAndAnyBars(String foo, String... bars) {
+    public void frobulateFooAndOptionalBar(String foo, String... bar) {
     
         frobulate(foo);  
     
