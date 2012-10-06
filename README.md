@@ -21,7 +21,7 @@ and specifying default values can quickly double the size of a method:
         }
     }
     
-By contrast, here's the varargosy version:
+By contrast, here's the Argon version:
 
     public void frobulateFooAndOptionalBar(String foo, String... bar) {
     
