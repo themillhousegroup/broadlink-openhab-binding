@@ -1,5 +1,5 @@
-varargosy
-=========
+argon
+=====
 
 Helper methods and utilities for getting the most out of Java's varargs
 
@@ -27,43 +27,43 @@ By contrast, here's the varargosy version:
     
         frobulate(foo);  
     
-        frobulate(Varargosy.defaultIfNotProvided(bar, "defaultBar"));
+        frobulate(Argon.defaultIfNotProvided(bar, "defaultBar"));
     }
 
 Using varargs can make for great code reuse, for example in tests.
 
 Installing
 ----------
-Add varargosy to your project's `pom.xml` (if using Maven) or add it to your classpath if using some other build tool such as ant.
+Add argon to your project's `pom.xml` (if using Maven) or add it to your classpath if using some other build tool such as ant.
 
 Usage
 -----
 
-Recognising the immense popularity of dependency-injection frameworks such as Spring, varargosy supports both
+Recognising the immense popularity of dependency-injection frameworks such as Spring, argon supports both
 "classic `static` methods" and "injected collaborator" modes:
 
 **Static methods:**
 
-    Varargosy.defaultIfNotProvided(V... args, V default);
-    Varargosy.numArgs(V... args);
+    Argon.defaultIfNotProvided(V... args, V default);
+    Argon.numArgs(V... args);
     
 **Collaborator (instance) methods:**
     
     @Autowired
-    private InjectableVarargosy varargHelper;
+    private InjectableArgon varargHelper;
     
     ...
      
     varargHelper.defaultIfNotProvided(V... args, V default);
     varargHelper.numArgs(V... args);
      
-By using varargosy in the injected style, you can trivially mock out interactions when writing unit tests.    
+By using Argon in the injected style, you can trivially mock out interactions when writing unit tests.    
     
     
 
 Building from Source
 --------------------
 
-varargosy uses Maven for its build system.
+Argon uses Maven for its build system.
 
 In order to create a distribution, simply run the mvn package -DskipTests command in the cloned directory.
