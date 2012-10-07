@@ -72,4 +72,6 @@ Building from Source
 
 Argon uses Maven for its build system.
 
-In order to create a distribution, simply run the mvn package -DskipTests command in the cloned directory.
+In order to create a distribution, simply run the `mvn package -DskipTests` command in the cloned directory.
+
+If you have a site-local repository (such as Nexus or Artifactory), configure the `site.local.nexus` property in the Argon `pom.xml` to the correct location, and you'll be able to perform a `mvn deploy` to get the JAR into position for all site users. 
