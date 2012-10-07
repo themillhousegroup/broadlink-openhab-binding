@@ -34,7 +34,13 @@ Using varargs can make for great code reuse, for example in tests.
 
 Installing
 ----------
-Add argon to your project's `pom.xml` (if using Maven) or add it to your classpath if using some other build tool such as ant.
+Add Argon to your project's `pom.xml` (if using Maven) or add it to your classpath if using some other build tool such as ant.
+
+    <dependency>
+        <groupId>com.themillhousegroup</groupId>
+        <artifactId>argon</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </dependency>
 
 Usage
 -----

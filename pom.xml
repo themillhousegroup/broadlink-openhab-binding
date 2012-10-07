@@ -1,0 +1,28 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.themillhousegroup</groupId>
+  <artifactId>argon</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>argon</name>
+  <url>https://github.com/themillhousegroup/argon</url>
+
+  <properties>
+    	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	<org.testng.version>6.3.1</org.testng.version>
+	<mockito.version>1.9.0</mockito.version>
+  </properties>
+
+  <dependencies>
+	<!--  Testing -->
+	<dependency>
+		<groupId>org.testng</groupId>
+		<artifactId>testng</artifactId>
+		<version>${org.testng.version}</version>
+		<scope>test</scope>
+	</dependency>
+  </dependencies>
+</project>
