@@ -14,7 +14,7 @@ import org.mockito.Mockito;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-@Test(groups={"argon", "unit", "fast", "statics", "appenders"})
+@Test(groups={"argon", "unit", "fast", "statics", "appendables"})
 public class ArgonAppendablesTest {
 	
 	@BeforeClass
