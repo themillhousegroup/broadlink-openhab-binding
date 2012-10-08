@@ -3,15 +3,13 @@ package com.themillhousegroup.argon;
 import static com.themillhousegroup.argon.Argon.hasVarargs;
 import static com.themillhousegroup.argon.Argon.lastVararg;
 
-import java.io.IOException;
-
 /**
  * Helper methods that use varargs to append content to a base <code>String</code>
  *
  */
-public class ArgonAppenders {
+public class ArgonStringAppenders {
 	
-	ArgonAppenders() {
+	ArgonStringAppenders() {
 		// Only instantiated by tests to ensure 100% coverage
 	}
 	
@@ -47,7 +45,8 @@ public class ArgonAppenders {
 	 * @return <code>base</code> if no varargs. 
 	 * Otherwise the last vararg is appended to <code>base</code>, using <code>separator</code> between the elements.
 	 */
-	public static String appendSeparatorAndLastIfPresent(String base, String separator, String... varargs) {
+	@SuppressWarnings("unchecked")
+	public static <T> String appendSeparatorAndLastIfPresent(String base, String separator, T... varargs) {
 		return hasVarargs(varargs) ? appendAll(base, separator, lastVararg(varargs)) : base;
 	}
 	
@@ -68,19 +67,7 @@ public class ArgonAppenders {
 	public static <T> String appendWithSeparatorsIfPresent(String base, String separator, T... varargs) {
 		return hasVarargs(varargs) ? appendAll(base, separator, varargs) : base;
 	}
-	
-	/**
-	 * @return <code>base</code> if no varargs. 
-	 * Otherwise the first vararg is appended to <code>base</code> and returned.
-	 */
-	public static <A extends Appendable, C extends CharSequence> Appendable appendIfPresent(A base, C... varargs) {
-		try {
-			return hasVarargs(varargs) ? base.append(varargs[0]) : base;
-		} catch (IOException e) {
-			throw new RuntimeException(e);
-		}
-	}
-	
+		
 	private static <T> String appendAll(String base, String separator, T... nonNullVarargs) {
 		StringBuffer sb = new StringBuffer(base);
 		for (T vararg : nonNullVarargs) {
