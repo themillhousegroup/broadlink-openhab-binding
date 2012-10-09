@@ -255,7 +255,7 @@ public class ArgonCollectionsTest {
 	}
 	
 	
-	private void thenCollectionHasSize(Collection<Object> coll, int i) {
+	private void thenCollectionHasSize(Collection<?> coll, int i) {
 		assertEquals((coll == null) ? 0 : coll.size(), i);
 	}
 }

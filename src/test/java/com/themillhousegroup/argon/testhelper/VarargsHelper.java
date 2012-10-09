@@ -17,62 +17,63 @@ public class VarargsHelper {
 	public static final Appendable PROVIDED_APPENDABLE = new StringBuffer(PROVIDED_STRING);
 	public static final Appendable SECOND_PROVIDED_APPENDABLE = new StringBuffer(SECOND_PROVIDED_STRING);
 	
-	public static Object[] nullVarargs() {
+	public static String[] nullVarargs() {
 		return null;
 	}
 	
-	public static Object[] emptyVarargs() {
-		return new Object[0];
+	public static String[] emptyVarargs() {
+		return new String[0];
 	}
 	
-	public static Object[] nullFirstVararg() {
-		Object[] args = {null};
+	public static String[] nullFirstVararg() {
+		String[] args = new String[1];
+		args[0] = null;
 		return args;
 	}
 	
-	public static Collection<Object> nullCollection() {
+	public static Collection<String> nullCollection() {
 		return null;
 	}
 	
-	public static Collection<Object> emptyCollection() {
-		return new ArrayList<Object>();
+	public static Collection<String> emptyCollection() {
+		return new ArrayList<String>();
 	}
 	
-	public static Collection<Object> collectionOf(Object... objects) {
-		List<Object> list = new ArrayList<Object>();
-		for (Object o : objects) {
+	public static <T> Collection<T> collectionOf(T... objects) {
+		List<T> list = new ArrayList<T>();
+		for (T o : objects) {
 			list.add(o);
 		}
 		return list;
 	}
 	
-	public static Set<Object> emptySet() {
-		return new HashSet<Object>();
+	public static Set<String> emptySet() {
+		return new HashSet<String>();
 	}
 	
-	public static Set<Object> nullSet() {
+	public static Set<String> nullSet() {
 		return null;
 	}
 	
-	public static Set<Object> setOf(Object... objects) {
-		Set<Object> set = new LinkedHashSet<Object>();
-		for (Object o : objects) {
+	public static Set<String> setOf(String... objects) {
+		Set<String> set = new LinkedHashSet<String>();
+		for (String o : objects) {
 			set.add(o);
 		}
 		return set;
 	}
 	
-	public static List<Object> emptyList() {
-		return new ArrayList<Object>();
+	public static List<String> emptyList() {
+		return new ArrayList<String>();
 	}
 	
-	public static List<Object> nullList() {
+	public static List<String> nullList() {
 		return null;
 	}
 	
-	public static List<Object> listOf(Object... objects) {
-		List<Object> list = new ArrayList<Object>();
-		for (Object o : objects) {
+	public static List<String> listOf(String... objects) {
+		List<String> list = new ArrayList<String>();
+		for (String o : objects) {
 			list.add(o);
 		}
 		return list;
