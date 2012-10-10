@@ -353,6 +353,71 @@ public class ArgonCollectionsTest {
 		assertFalse(ArgonCollections.containsAll(nullList(), PROVIDED_STRING, SECOND_PROVIDED_STRING));
 	}
 	
+	// Tests for retainAll()
+	
+	@Test
+	public void shouldLeaveCollectionAloneWhenNoVarargsRetainAll() {
+		assertFalse(ArgonCollections.retainAll(emptyCollection()));
+	}
+	
+	@Test
+	public void shouldLeaveCollectionAloneWhenNullVarargsRetainAll() {
+		assertFalse(ArgonCollections.retainAll(emptyCollection(), nullVarargs()));
+	}	
+
+	@Test
+	public void shouldLeaveCollectionAloneWhenEmptyVarargsRetainAll() {
+		assertFalse(ArgonCollections.retainAll(emptyCollection(), emptyVarargs()));
+	}
+	
+	@Test
+	public void shouldLeaveCollectionAloneWhenNullFirstVarargsRetainAll() {
+		assertFalse(ArgonCollections.retainAll(emptyCollection(), nullFirstVararg()));
+	}
+	
+	@Test
+	public void shouldLeaveCollectionAloneWhenEmptyCollectionWithOneVarargToRetain() {
+		assertFalse(ArgonCollections.retainAll(emptyCollection(), PROVIDED_STRING));
+	}
+	
+	
+	@Test
+	public void shouldHandleNullCollectionRetainAll() {
+		assertFalse(ArgonCollections.retainAll(nullCollection(), PROVIDED_STRING, SECOND_PROVIDED_STRING));
+	}
+	
+	@Test
+	public void shouldLeaveSetAloneWhenNullFirstVarargsRetainAll() {
+		assertFalse(ArgonCollections.retainAll(emptySet(), nullFirstVararg()));
+	}
+	
+	@Test
+	public void shouldRetainOneInSetWhenOneVarargMatchesSetOfTwo() {
+		Set<String> testSet = setOf(PROVIDED_STRING, SECOND_PROVIDED_STRING);
+		assertTrue(ArgonCollections.retainAll(testSet, PROVIDED_STRING));
+		assertEquals(testSet.size(), 1);
+	}
+
+	@Test
+	public void shouldLeaveSetAloneWhenRetainAllToEmptySetWhenTwoVarargsSpecified() {
+		assertFalse(ArgonCollections.retainAll(emptySet(), PROVIDED_STRING, SECOND_PROVIDED_STRING));
+	}
+
+	@Test
+	public void shouldHandleNullSetRetainAll() {
+		assertFalse(ArgonCollections.retainAll(nullSet(), PROVIDED_STRING, SECOND_PROVIDED_STRING));
+	}
+	
+	@Test
+	public void shouldLeaveListAloneWhenNullFirstVarargsRetainAll() {
+		assertFalse(ArgonCollections.retainAll(emptyList(), nullFirstVararg()));
+	}
+
+	@Test
+	public void shouldLeaveListAloneWhenNullFirstVarargsRetainAllPopulatedList() {
+		assertFalse(ArgonCollections.retainAll(listOf(PROVIDED_STRING), nullFirstVararg()));
+	}
+	
 	
 	private void thenCollectionHasSize(Collection<?> coll, int i) {
 		assertEquals((coll == null) ? 0 : coll.size(), i);
