@@ -88,10 +88,15 @@ public class ArgonCollectionsTest {
 	public void shouldAddToSetWhenOneVarargAdded() {
 		thenCollectionHasSize(ArgonCollections.add(emptySet(), PROVIDED_STRING), 1);
 	}
-	
+
 	@Test
 	public void shouldAddToSetWhenTwoVarargsAdded() {
 		thenCollectionHasSize(ArgonCollections.add(emptySet(), PROVIDED_STRING, SECOND_PROVIDED_STRING), 2);
+	}
+
+	@Test
+	public void shouldAddOneToSetWhenTwoVarargsAddedButSecondIsNull() {
+		thenCollectionHasSize(ArgonCollections.add(emptySet(), PROVIDED_STRING, null), 1);
 	}
 	
 	@Test
@@ -165,6 +170,11 @@ public class ArgonCollectionsTest {
 	@Test
 	public void shouldRemoveFromSetWhenTwoVarargsRemoved() {
 		thenCollectionHasSize(ArgonCollections.remove(setOf(PROVIDED_STRING, SECOND_PROVIDED_STRING), PROVIDED_STRING, SECOND_PROVIDED_STRING), 0);
+	}
+
+	@Test
+	public void shouldRemoveOneFromSetWhenTwoVarargsRemovedButSecondIsNull() {
+		thenCollectionHasSize(ArgonCollections.remove(setOf(PROVIDED_STRING, SECOND_PROVIDED_STRING), PROVIDED_STRING, null), 1);
 	}
 	
 	@Test
