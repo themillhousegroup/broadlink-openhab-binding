@@ -72,7 +72,13 @@ public class ArgonCollections {
 	 * @return true if <code>collection</code> contains <i>all</i> of the elements in <code>others</code>
 	 */
 	public static <E, C extends Collection<E>> boolean containsAll(C collection, E... others) {
-		if (hasVarargs(others) && collection != null) {
+		boolean hasVarargs = hasVarargs(others);
+
+		if (collection == null) {
+			return !hasVarargs; // The only thing a null collection can match is a zero-length varargs
+		}
+
+		if (hasVarargs) {
 			for (E e : others) {
 				if (!collection.contains(e)) {
 					return false;

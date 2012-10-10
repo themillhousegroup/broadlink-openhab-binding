@@ -43,6 +43,8 @@ public class ArgonCollectionsTest {
 	public void setup() {
 		new ArgonCollections(); // For 100% code coverage only.
 	}
+
+	// Tests for add()
 	
 	@Test
 	public void shouldLeaveCollectionAloneWhenNoVarargsAdd() {
@@ -120,7 +122,7 @@ public class ArgonCollectionsTest {
 	}
 	
 	
-	///
+	// Tests for remove()
 	
 	@Test
 	public void shouldLeaveCollectionAloneWhenNoVarargsRemoved() {
@@ -197,7 +199,7 @@ public class ArgonCollectionsTest {
 		thenCollectionHasSize(ArgonCollections.add(nullList(), PROVIDED_STRING, SECOND_PROVIDED_STRING), 0);
 	}
 	
-	////
+	// Tests for containsAny()
 	
 	@Test
 	public void shouldBeFalseWhenNoVarargsContainsAny() {
@@ -243,6 +245,11 @@ public class ArgonCollectionsTest {
 	public void shouldBeTrueWhenSetContainsAnyExactMatchVarargs() {
 		assertTrue(ArgonCollections.containsAny(setOf(PROVIDED_STRING), PROVIDED_STRING));
 	}
+
+	@Test
+	public void shouldBeFalseWhenSetDoesNotContainAnyValidVarargs() {
+		assertFalse(ArgonCollections.containsAny(setOf(PROVIDED_STRING), SECOND_PROVIDED_STRING));
+	}
 	
 	@Test
 	public void shouldHandleNullSetContainsAny() {
@@ -262,6 +269,88 @@ public class ArgonCollectionsTest {
 	@Test
 	public void shouldHandleNullListContainsAny() {
 		assertFalse(ArgonCollections.containsAny(nullList(), PROVIDED_STRING, SECOND_PROVIDED_STRING));
+	}
+
+	// Tests for containsAll()
+
+	@Test
+	public void shouldBeTrueWhenNoVarargsContainsAll() {
+		assertTrue(ArgonCollections.containsAll(collectionOf(PROVIDED_STRING)));
+	}
+	
+	@Test
+	public void shouldBeTrueWhenNullVarargsContainsAll() {
+		assertTrue(ArgonCollections.containsAll(collectionOf(PROVIDED_STRING), nullVarargs()));
+	}	
+
+	@Test
+	public void shouldBeTrueWhenEmptyVarargsContainsAll() {
+		assertTrue(ArgonCollections.containsAll(collectionOf(PROVIDED_STRING), emptyVarargs()));
+	}
+	
+	@Test
+	public void shouldBeTrueWhenNullFirstVarargsContainsAll() {
+		assertTrue(ArgonCollections.containsAll(collectionOf(PROVIDED_STRING), nullFirstVararg()));
+	}
+	
+	@Test
+	public void shouldBeTrueWhenOneVarargContainsAll() {
+		assertTrue(ArgonCollections.containsAll(collectionOf(PROVIDED_STRING), PROVIDED_STRING));
+	}
+	
+	@Test
+	public void shouldBeFalseWhenOneVarargsContainsAllWithTwoElements() {
+		assertFalse(ArgonCollections.containsAll(collectionOf(SECOND_PROVIDED_STRING), PROVIDED_STRING, SECOND_PROVIDED_STRING));
+	}
+
+	@Test
+	public void shouldBeTrueWhenTwoVarargsContainsAll() {
+		assertTrue(ArgonCollections.containsAll(collectionOf(PROVIDED_STRING, SECOND_PROVIDED_STRING), SECOND_PROVIDED_STRING));
+	}
+	
+	@Test
+	public void shouldHandleNullCollectionContainsAll() {
+		assertFalse(ArgonCollections.containsAll(nullCollection(), PROVIDED_STRING, SECOND_PROVIDED_STRING));
+	}
+	
+	@Test
+	public void shouldBeTrueWhenSetContainsAllNullFirstVarargs() {
+		assertTrue(ArgonCollections.containsAll(setOf(PROVIDED_STRING), nullFirstVararg()));
+	}
+	
+	@Test
+	public void shouldBeTrueWhenSetContainsAllExactMatchVarargs() {
+		assertTrue(ArgonCollections.containsAll(setOf(PROVIDED_STRING), PROVIDED_STRING));
+	}
+
+	@Test
+	public void shouldBeFalseWhenSetDoesNotContainAllValidVarargs() {
+		assertFalse(ArgonCollections.containsAll(setOf(PROVIDED_STRING), SECOND_PROVIDED_STRING));
+	}
+	
+	@Test
+	public void shouldHandleNullSetContainsAll() {
+		assertFalse(ArgonCollections.containsAll(nullSet(), PROVIDED_STRING, SECOND_PROVIDED_STRING));
+	}
+
+	@Test
+	public void shouldBeTrueWhenContainsAllBetweenNullSetAndEmptyVarargs() {
+		assertTrue(ArgonCollections.containsAll(nullSet()));
+	}
+	
+	@Test
+	public void shouldBeTrueWhenListContainsAllNullFirstVarargs() {
+		assertTrue(ArgonCollections.containsAll(listOf(PROVIDED_STRING), nullFirstVararg()));
+	}
+	
+	@Test
+	public void shouldBeTrueWhenListContainsAllExactMatchVarargs() {
+		assertTrue(ArgonCollections.containsAll(listOf(PROVIDED_STRING), PROVIDED_STRING));
+	}
+	
+	@Test
+	public void shouldHandleNullListContainsAll() {
+		assertFalse(ArgonCollections.containsAll(nullList(), PROVIDED_STRING, SECOND_PROVIDED_STRING));
 	}
 	
 	
