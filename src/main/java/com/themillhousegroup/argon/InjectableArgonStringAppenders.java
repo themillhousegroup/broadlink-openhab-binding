@@ -7,6 +7,12 @@ package com.themillhousegroup.argon;
  * unit tests. 
  */
 public interface InjectableArgonStringAppenders {
+	
+	/**
+	 * @return <code>base</code> if no varargs. 
+	 * Otherwise the first vararg's <code>toString()</code> representation
+	 * is appended to <code>base</code> and returned.
+	 */
 	<T> String appendFirstIfPresent(String base, T... varargs);
 	
 	/**
