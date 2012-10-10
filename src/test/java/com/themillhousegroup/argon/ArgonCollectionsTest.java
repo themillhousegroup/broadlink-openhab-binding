@@ -417,7 +417,48 @@ public class ArgonCollectionsTest {
 	public void shouldLeaveListAloneWhenNullFirstVarargsRetainAllPopulatedList() {
 		assertFalse(ArgonCollections.retainAll(listOf(PROVIDED_STRING), nullFirstVararg()));
 	}
+
+	// Tests for in()
+
+	@Test
+	public void shouldFindNothingInUnspecifiedVarargs() {
+		assertFalse(ArgonCollections.in(PROVIDED_STRING));
+	}
+
+	@Test
+	public void shouldFindNothingInNullVarargs() {
+		assertFalse(ArgonCollections.in(PROVIDED_STRING, nullVarargs()));
+	}
+
+	@Test
+	public void shouldFindNothingInEmptyVarargs() {
+		assertFalse(ArgonCollections.in(PROVIDED_STRING, emptyVarargs()));
+	}
 	
+	@Test
+	public void shouldFindNothingInNullFirstVarargs() {
+		assertFalse(ArgonCollections.in(PROVIDED_STRING, nullFirstVararg()));
+	}
+
+	@Test
+	public void shouldFindObjectInSingleVarargThatContainsObject() {
+		assertTrue(ArgonCollections.in(PROVIDED_STRING, PROVIDED_STRING));
+	}
+
+	@Test
+	public void shouldFindObjectInMultipleVarargsThatContainsObject() {
+		assertTrue(ArgonCollections.in(PROVIDED_STRING, SECOND_PROVIDED_STRING, PROVIDED_STRING));
+	}
+
+	@Test
+	public void shouldNotFindNullObjectInMultipleVarargsThatContainsObject() {
+		assertFalse(ArgonCollections.in(null, SECOND_PROVIDED_STRING, PROVIDED_STRING));
+	}
+
+	@Test
+	public void shouldNotFindObjectInMultipleVarargsThatDoesNotContainObject() {
+		assertFalse(ArgonCollections.in("sdfs", SECOND_PROVIDED_STRING, PROVIDED_STRING));
+	}
 	
 	private void thenCollectionHasSize(Collection<?> coll, int i) {
 		assertEquals((coll == null) ? 0 : coll.size(), i);
