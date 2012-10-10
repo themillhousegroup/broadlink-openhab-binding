@@ -460,7 +460,50 @@ public class ArgonCollectionsTest {
 		assertFalse(ArgonCollections.in("sdfs", SECOND_PROVIDED_STRING, PROVIDED_STRING));
 	}
 	
+	// Tests for notIn()
+
+	@Test
+	public void shouldConsiderSuppliedObjectToBeNotInUnspecifiedVarargs() {
+		assertTrue(ArgonCollections.notIn(PROVIDED_STRING));
+	}
+
+	@Test
+	public void shouldConsiderSuppliedObjectToBeNotInNullVarargs() {
+		assertTrue(ArgonCollections.notIn(PROVIDED_STRING, nullVarargs()));
+	}
+
+	@Test
+	public void shouldConsiderSuppliedObjectToBeNotInEmptyVarargs() {
+		assertTrue(ArgonCollections.notIn(PROVIDED_STRING, emptyVarargs()));
+	}
+	
+	@Test
+	public void shouldConsiderSuppliedObjectToBeNotInNullFirstVarargs() {
+		assertTrue(ArgonCollections.notIn(PROVIDED_STRING, nullFirstVararg()));
+	}
+
+	@Test
+	public void notInShouldBeFalseWhenFindObjectInSingleVarargThatContainsObject() {
+		assertFalse(ArgonCollections.notIn(PROVIDED_STRING, PROVIDED_STRING));
+	}
+
+	@Test
+	public void notInShouldBeFalseWhenFindObjectInMultipleVarargsThatContainsObject() {
+		assertFalse(ArgonCollections.notIn(PROVIDED_STRING, SECOND_PROVIDED_STRING, PROVIDED_STRING));
+	}
+
+	@Test
+	public void notInShouldBeTrueWhenNullObjectInMultipleVarargs() {
+		assertTrue(ArgonCollections.notIn(null, SECOND_PROVIDED_STRING, PROVIDED_STRING));
+	}
+
+	@Test
+	public void notInShouldBeTrueWhenMultipleVarargsThatDoesNotContainObject() {
+		assertTrue(ArgonCollections.notIn("sdfs", SECOND_PROVIDED_STRING, PROVIDED_STRING));
+	}
+	
 	private void thenCollectionHasSize(Collection<?> coll, int i) {
 		assertEquals((coll == null) ? 0 : coll.size(), i);
 	}
+
 }
