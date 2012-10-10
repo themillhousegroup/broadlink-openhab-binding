@@ -3,9 +3,10 @@ package com.themillhousegroup.argon;
 
 /** The core class for dealing with varargs. See individual method javadocs for more detail.
  * <br/><br/>Contains ONLY static methods. 
- * @see <code>InjectableArgon</code> for instance-method versions that can be easily mocked.
- * @see <code>ArgonAppenders</code> for methods for working with String representations.
- * @see <code>ArgonIterables</code> for methods for working with collections and iterables.
+ * @see {@code InjectableArgon*} for instance-method versions that can be easily mocked.
+ * @see {@link ArgonAppendables} for methods that work with {@code Appendable}s.
+ * @see {@link ArgonCollections} for methods that work with collections
+ * @see {@link ArgonStringAppenders} for methods that append to Strings
  */
 public class Argon {
 

@@ -6,8 +6,7 @@ import static com.themillhousegroup.argon.Argon.lastVararg;
 import java.io.IOException;
 
 /**
- * Helper methods that use varargs to append content to a base <code>Appendable</code> instance
- *
+ * Helper methods that use varargs to append content to a base {@link Appendable} instance
  */
 public class ArgonAppendables {
 	

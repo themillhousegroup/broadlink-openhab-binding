@@ -2,33 +2,23 @@ package com.themillhousegroup.argon;
 
 import static com.themillhousegroup.argon.testhelper.VarargsHelper.PROVIDED_STRING;
 import static com.themillhousegroup.argon.testhelper.VarargsHelper.SECOND_PROVIDED_STRING;
-import static com.themillhousegroup.argon.testhelper.VarargsHelper.emptyVarargs;
-import static com.themillhousegroup.argon.testhelper.VarargsHelper.nullFirstVararg;
-import static com.themillhousegroup.argon.testhelper.VarargsHelper.nullVarargs;
-
-import static com.themillhousegroup.argon.testhelper.VarargsHelper.nullCollection;
-import static com.themillhousegroup.argon.testhelper.VarargsHelper.emptyCollection;
 import static com.themillhousegroup.argon.testhelper.VarargsHelper.collectionOf;
-
-import static com.themillhousegroup.argon.testhelper.VarargsHelper.emptySet;
-import static com.themillhousegroup.argon.testhelper.VarargsHelper.nullSet;
-import static com.themillhousegroup.argon.testhelper.VarargsHelper.setOf;
-
+import static com.themillhousegroup.argon.testhelper.VarargsHelper.emptyCollection;
 import static com.themillhousegroup.argon.testhelper.VarargsHelper.emptyList;
-import static com.themillhousegroup.argon.testhelper.VarargsHelper.nullList;
+import static com.themillhousegroup.argon.testhelper.VarargsHelper.emptySet;
+import static com.themillhousegroup.argon.testhelper.VarargsHelper.emptyVarargs;
 import static com.themillhousegroup.argon.testhelper.VarargsHelper.listOf;
-
-
-
-
+import static com.themillhousegroup.argon.testhelper.VarargsHelper.nullCollection;
+import static com.themillhousegroup.argon.testhelper.VarargsHelper.nullFirstVararg;
+import static com.themillhousegroup.argon.testhelper.VarargsHelper.nullList;
+import static com.themillhousegroup.argon.testhelper.VarargsHelper.nullSet;
+import static com.themillhousegroup.argon.testhelper.VarargsHelper.nullVarargs;
+import static com.themillhousegroup.argon.testhelper.VarargsHelper.setOf;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import org.testng.annotations.BeforeClass;

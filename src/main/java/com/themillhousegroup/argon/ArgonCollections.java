@@ -6,11 +6,11 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
-/** Methods for dealing with varargs in conjunction with various <code>Collection</code> classes,
+/** Methods for dealing with varargs in conjunction with various {@code Collection} classes,
  * or treating a varargs-specified list of elements <i>like</i> a collection.
  * See individual method javadocs for more detail.
  * <br/><br/>Contains ONLY static methods. 
- * @see <code>InjectableArgonCollections</code> for instance-method versions that can be easily mocked.
+ * @see {@link InjectableArgonCollections} for instance-method versions that can be easily mocked.
  */
 public class ArgonCollections {
 	

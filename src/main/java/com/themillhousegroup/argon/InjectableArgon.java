@@ -1,7 +1,7 @@
 package com.themillhousegroup.argon;
 
 /**
- * An interface exposing the Argon static methods, allowing
+ * An interface exposing the {@link Argon} static methods, allowing
  * for easy injection of an implementation (<code>InjectableArgonImpl</code>)
  * by a DI framework, and straightforward mocking of behaviour in your
  * unit tests. 
