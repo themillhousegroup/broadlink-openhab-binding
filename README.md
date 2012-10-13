@@ -30,7 +30,19 @@ By contrast, here's the Argon version:
         frobulate(Argon.defaultIfNotProvided(bar, "defaultBar"));
     }
 
-Using varargs can make for great code reuse, for example in tests.
+Using varargs can make for great code reuse, for example in tests:
+
+    public void shouldTellAllSubscribersAboutCriticalEvent() {
+
+        givenEventSubscribers(EventLevel.CRITICAL, tom, dick, harry);
+
+        whenEventOfLevelOccurs(EventLevel.CRITICAL);
+
+        thenTheseUsersWereNotified(true, tom, dick, harry);
+        thenTheseUsersWereNotNotified(false, bill, ben);
+    }
+
+
 
 Installing
 ----------
@@ -65,7 +77,12 @@ Recognising the immense popularity of dependency-injection frameworks such as Sp
      
 By using Argon in the injected style, you can trivially mock out interactions when writing unit tests.    
     
-    
+
+Dependencies
+------------
+
+Argon has no external dependencies at runtime. If you want to build Argon from source, then the `test` scope 
+requires *TestNG* and *Mockito*.
 
 Building from Source
 --------------------
@@ -75,3 +92,10 @@ Argon uses Maven for its build system.
 In order to create a distribution, simply run the `mvn package -DskipTests` command in the cloned directory.
 
 If you have a site-local repository (such as Nexus or Artifactory), configure the `site.local.nexus` property in the Argon `pom.xml` to the correct location, and you'll be able to perform a `mvn deploy` to get the JAR into position for all site users. 
+
+
+Modifying
+---------
+
+Argon has 100% code coverage via unit tests, and this is enforced by the Cobertura code-coverage tool at build time. If you modify
+the code, you'll need to write one or more tests to cover it before the Maven build will pass!
