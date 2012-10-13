@@ -1,6 +1,7 @@
 package com.themillhousegroup.argon.impl;
 
 import java.util.Collection;
+import java.util.List;
 
 import com.themillhousegroup.argon.ArgonCollections;
 import com.themillhousegroup.argon.InjectableArgonCollections;
@@ -36,5 +37,13 @@ public class InjectableArgonCollectionsImpl implements InjectableArgonCollection
 
 	public <E> boolean notIn(E candidate, E... options) {
 		return ArgonCollections.notIn(candidate, options);
+	}
+	
+	public <E> Iterable<E> each(E... elements) {
+		return ArgonCollections.each(elements);
+	}
+	
+	public <E> List<E> asList(E... elements) {
+		return ArgonCollections.asList(elements);
 	}
 }

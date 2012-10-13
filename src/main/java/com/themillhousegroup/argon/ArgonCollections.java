@@ -2,8 +2,10 @@ package com.themillhousegroup.argon;
 
 import static com.themillhousegroup.argon.Argon.hasVarargs;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /** Methods for dealing with varargs in conjunction with various {@code Collection} classes,
@@ -134,5 +136,27 @@ public class ArgonCollections {
 	 */
 	public static <E> boolean notIn(E candidate, E... options) {
 		return !in(candidate, options);
+	}
+	
+	/**
+	 * @return a (possibly-empty) {@link Iterable} that contains {@code elements}. NEVER {@code null}
+	 */
+	public static <E> Iterable<E> each(E... elements) {
+		 return asList(elements);
+	}
+	
+	/**
+	 * @return a (possibly-empty) {@link List} that contains {@code elements}. NEVER {@code null}
+	 */
+	public static <E> List<E> asList(E... elements) {
+		 List<E> list = new ArrayList<E>();
+		 
+		 if (hasVarargs(elements)) {
+			 for (E e : elements) {
+					list.add(e);
+				}
+		 }
+		 
+		 return list;
 	}
 }

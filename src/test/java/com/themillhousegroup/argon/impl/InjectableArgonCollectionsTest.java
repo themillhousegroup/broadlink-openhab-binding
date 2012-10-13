@@ -19,6 +19,7 @@ import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.Set;
 
 import org.testng.annotations.BeforeClass;
@@ -29,7 +30,7 @@ import com.themillhousegroup.argon.InjectableArgonCollections;
 
 
 @Test(groups={"argon", "unit", "fast", "injectables", "collections"})
-public class ArgonCollectionsTest {
+public class InjectableArgonCollectionsTest {
 
 	private InjectableArgonCollections testInstance;
 	
@@ -494,10 +495,81 @@ public class ArgonCollectionsTest {
 	@Test
 	public void notInShouldBeTrueWhenMultipleVarargsThatDoesNotContainObject() {
 		assertTrue(testInstance.notIn("sdfs", SECOND_PROVIDED_STRING, PROVIDED_STRING));
+	}	
+	
+	// Tests for each()
+	
+	@Test
+	public void shouldReturnEmptyIterableForNonExistentVarargs() {
+		assertFalse(testInstance.each().iterator().hasNext());
 	}
 	
+	@Test
+	public void shouldReturnEmptyIterableForNullVarargs() {
+		assertFalse(testInstance.each(nullVarargs()).iterator().hasNext());
+	}
+	
+	@Test
+	public void shouldReturnEmptyIterableForEmptyVarargs() {
+		assertFalse(testInstance.each(emptyVarargs()).iterator().hasNext());
+	}
+	
+	@Test
+	public void shouldReturnEmptyIterableForNullFirstVarargs() {
+		assertFalse(testInstance.each(nullFirstVararg()).iterator().hasNext());
+	}
+	
+	@Test
+	public void shouldReturnNonEmptyIterableForSingleVarargs() {
+		Iterator<String> it = testInstance.each(PROVIDED_STRING).iterator();
+		assertTrue(it.hasNext());
+		it.next();
+		assertFalse(it.hasNext());
+	}
+	
+	@Test
+	public void shouldReturnNonEmptyIterableForMultipleVarargs() {
+		Iterator<String> it = testInstance.each(PROVIDED_STRING, SECOND_PROVIDED_STRING).iterator();
+		assertTrue(it.hasNext());
+		it.next();
+		assertTrue(it.hasNext());
+		it.next();
+		assertFalse(it.hasNext());
+	}
+	
+	// Tests for asList()
+	
+	@Test
+	public void shouldReturnEmptyIterableForNonExistentVarargsAsList() {
+		assertTrue(testInstance.asList().isEmpty());
+	}
+	
+	@Test
+	public void shouldReturnEmptyIterableForNullVarargsAsList() {
+		assertTrue(testInstance.asList(nullVarargs()).isEmpty());
+	}
+	
+	@Test
+	public void shouldReturnEmptyIterableForEmptyVarargsAsList() {
+		assertTrue(testInstance.asList(emptyVarargs()).isEmpty());
+	}
+	
+	@Test
+	public void shouldReturnEmptyIterableForNullFirstVarargsAsList() {
+		assertTrue(testInstance.asList(nullFirstVararg()).isEmpty());
+	}
+	
+	@Test
+	public void shouldReturnNonEmptyIterableForSingleVarargsAsList() {
+		assertEquals(testInstance.asList(PROVIDED_STRING).size(), 1);
+	}
+	
+	@Test
+	public void shouldReturnNonEmptyIterableForMultipleVarargsAsList() {
+		assertEquals(testInstance.asList(PROVIDED_STRING, SECOND_PROVIDED_STRING).size(), 2);
+	}
+
 	private void thenCollectionHasSize(Collection<?> coll, int i) {
 		assertEquals((coll == null) ? 0 : coll.size(), i);
 	}
-
 }

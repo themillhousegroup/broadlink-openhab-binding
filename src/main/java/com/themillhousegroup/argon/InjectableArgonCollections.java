@@ -1,6 +1,7 @@
 package com.themillhousegroup.argon;
 
 import java.util.Collection;
+import java.util.List;
 
 /**
  * An interface exposing the {@link ArgonCollections} static methods, allowing
@@ -65,4 +66,14 @@ public interface InjectableArgonCollections {
 	 * @see #in(Object, Object...)
 	 */
 	 <E> boolean notIn(E candidate, E... options);
+	 
+	 /**
+	 * @return a (possibly-empty) {@link Iterable} that contains {@code elements}. NEVER {@code null}
+	 */
+	<E> Iterable<E> each(E... elements);
+	
+	/**
+	 * @return a (possibly-empty) {@link List} that contains {@code elements}. NEVER {@code null}
+	 */
+	<E> List<E> asList(E... elements);
 }

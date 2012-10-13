@@ -19,6 +19,7 @@ import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.Set;
 
 import org.testng.annotations.BeforeClass;
@@ -490,6 +491,78 @@ public class ArgonCollectionsTest {
 	@Test
 	public void notInShouldBeTrueWhenMultipleVarargsThatDoesNotContainObject() {
 		assertTrue(ArgonCollections.notIn("sdfs", SECOND_PROVIDED_STRING, PROVIDED_STRING));
+	}
+	
+	// Tests for each()
+	
+	@Test
+	public void shouldReturnEmptyIterableForNonExistentVarargs() {
+		assertFalse(ArgonCollections.each().iterator().hasNext());
+	}
+	
+	@Test
+	public void shouldReturnEmptyIterableForNullVarargs() {
+		assertFalse(ArgonCollections.each(nullVarargs()).iterator().hasNext());
+	}
+	
+	@Test
+	public void shouldReturnEmptyIterableForEmptyVarargs() {
+		assertFalse(ArgonCollections.each(emptyVarargs()).iterator().hasNext());
+	}
+	
+	@Test
+	public void shouldReturnEmptyIterableForNullFirstVarargs() {
+		assertFalse(ArgonCollections.each(nullFirstVararg()).iterator().hasNext());
+	}
+	
+	@Test
+	public void shouldReturnNonEmptyIterableForSingleVarargs() {
+		Iterator<String> it = ArgonCollections.each(PROVIDED_STRING).iterator();
+		assertTrue(it.hasNext());
+		it.next();
+		assertFalse(it.hasNext());
+	}
+	
+	@Test
+	public void shouldReturnNonEmptyIterableForMultipleVarargs() {
+		Iterator<String> it = ArgonCollections.each(PROVIDED_STRING, SECOND_PROVIDED_STRING).iterator();
+		assertTrue(it.hasNext());
+		it.next();
+		assertTrue(it.hasNext());
+		it.next();
+		assertFalse(it.hasNext());
+	}
+	
+	// Tests for asList()
+	
+	@Test
+	public void shouldReturnEmptyIterableForNonExistentVarargsAsList() {
+		assertTrue(ArgonCollections.asList().isEmpty());
+	}
+	
+	@Test
+	public void shouldReturnEmptyIterableForNullVarargsAsList() {
+		assertTrue(ArgonCollections.asList(nullVarargs()).isEmpty());
+	}
+	
+	@Test
+	public void shouldReturnEmptyIterableForEmptyVarargsAsList() {
+		assertTrue(ArgonCollections.asList(emptyVarargs()).isEmpty());
+	}
+	
+	@Test
+	public void shouldReturnEmptyIterableForNullFirstVarargsAsList() {
+		assertTrue(ArgonCollections.asList(nullFirstVararg()).isEmpty());
+	}
+	
+	@Test
+	public void shouldReturnNonEmptyIterableForSingleVarargsAsList() {
+		assertEquals(ArgonCollections.asList(PROVIDED_STRING).size(), 1);
+	}
+	
+	@Test
+	public void shouldReturnNonEmptyIterableForMultipleVarargsAsList() {
+		assertEquals(ArgonCollections.asList(PROVIDED_STRING, SECOND_PROVIDED_STRING).size(), 2);
 	}
 	
 	private void thenCollectionHasSize(Collection<?> coll, int i) {

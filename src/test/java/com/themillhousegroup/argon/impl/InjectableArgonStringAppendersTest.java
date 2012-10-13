@@ -14,7 +14,7 @@ import org.testng.annotations.Test;
 import com.themillhousegroup.argon.InjectableArgonStringAppenders;
 
 @Test(groups={"argon", "unit", "fast", "injectables", "appenders"})
-public class ArgonStringAppendersTest {
+public class InjectableArgonStringAppendersTest {
 	
 	private InjectableArgonStringAppenders testInstance;
 	
