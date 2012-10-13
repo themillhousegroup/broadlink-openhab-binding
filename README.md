@@ -43,15 +43,15 @@ Using varargs can make for great code reuse, for example in tests:
     }
 
 
-This style is both very readable in the test methods, but also in the implementation via Argon:
+This style is both very readable in the test methods, but also in the implementation via the ArgonCollections class:
 
     private void thenTheseUsersWereNotified(boolean wereNotified, User... users) {
-        for (User user : Argon.each(users)) {
+        for (User user : ArgonCollections.each(users)) {
             assertEquals(user.isNotified(), wereNotified);
         }
     }
 
-(Note that `Argon.each()` guarantees to never return null!)
+Note that `ArgonCollections.each()` guarantees to never return null!
 
 
 Installing
