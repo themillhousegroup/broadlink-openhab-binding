@@ -330,6 +330,11 @@ public class ArgonCollectionsTest {
 	}
 	
 	@Test
+	public void shouldBeTrueWhenContainsAllBetweenEmptySetAndEmptyVarargs() {
+		assertTrue(ArgonCollections.containsAll(emptySet()));
+	}
+	
+	@Test
 	public void shouldBeTrueWhenListContainsAllNullFirstVarargs() {
 		assertTrue(ArgonCollections.containsAll(listOf(PROVIDED_STRING), nullFirstVararg()));
 	}
@@ -342,6 +347,98 @@ public class ArgonCollectionsTest {
 	@Test
 	public void shouldHandleNullListContainsAll() {
 		assertFalse(ArgonCollections.containsAll(nullList(), PROVIDED_STRING, SECOND_PROVIDED_STRING));
+	}
+	
+	// Tests for equalInSizeAndOrder()
+
+	@Test
+	public void shouldBeFalseWhenNoVarargsEqualInSizeAndOrder() {
+		assertFalse(ArgonCollections.equalInSizeAndOrder(collectionOf(PROVIDED_STRING)));
+	}
+	
+	@Test
+	public void shouldBeFalseWhenNullVarargsEqualInSizeAndOrder() {
+		assertFalse(ArgonCollections.equalInSizeAndOrder(collectionOf(PROVIDED_STRING), nullVarargs()));
+	}
+	
+	@Test
+	public void shouldBeFalseWhenNullFirstVarargsEqualInSizeAndOrder() {
+		assertFalse(ArgonCollections.equalInSizeAndOrder(collectionOf(PROVIDED_STRING), nullFirstVararg()));
+	}
+	
+	@Test
+	public void shouldBeTrueWhenOneVarargEqualInSizeAndOrder() {
+		assertTrue(ArgonCollections.equalInSizeAndOrder(collectionOf(PROVIDED_STRING), PROVIDED_STRING));
+	}
+	
+	@Test
+	public void shouldBeFalseWhenOneVarargsEqualInSizeAndOrderWithTwoElements() {
+		assertFalse(ArgonCollections.equalInSizeAndOrder(collectionOf(SECOND_PROVIDED_STRING), PROVIDED_STRING, SECOND_PROVIDED_STRING));
+	}
+
+	@Test
+	public void shouldBeFalseWhenTwoVarargsEqualInSizeAndOrderNotSameSize() {
+		assertFalse(ArgonCollections.equalInSizeAndOrder(collectionOf(PROVIDED_STRING, SECOND_PROVIDED_STRING), SECOND_PROVIDED_STRING));
+	}
+	
+	@Test
+	public void shouldBeFalseWhenTwoVarargsEqualInSizeAndOrderSameSizeWrongOrder() {
+		assertFalse(ArgonCollections.equalInSizeAndOrder(collectionOf(PROVIDED_STRING, SECOND_PROVIDED_STRING), SECOND_PROVIDED_STRING, PROVIDED_STRING));
+	}
+	
+	@Test
+	public void shouldBeTrueWhenTwoVarargsEqualInSizeAndOrderSameSizeAndOrder() {
+		assertTrue(ArgonCollections.equalInSizeAndOrder(collectionOf(PROVIDED_STRING, SECOND_PROVIDED_STRING), PROVIDED_STRING, SECOND_PROVIDED_STRING));
+	}
+	
+	@Test
+	public void shouldHandleNullCollectionEqualInSizeAndOrder() {
+		assertFalse(ArgonCollections.equalInSizeAndOrder(nullCollection(), PROVIDED_STRING, SECOND_PROVIDED_STRING));
+	}
+	
+	@Test
+	public void shouldBeFalseWhenSetEqualInSizeAndOrderNullFirstVarargs() {
+		assertFalse(ArgonCollections.equalInSizeAndOrder(setOf(PROVIDED_STRING), nullFirstVararg()));
+	}
+	
+	@Test
+	public void shouldBeTrueWhenSetEqualInSizeAndOrderExactMatchVarargs() {
+		assertTrue(ArgonCollections.equalInSizeAndOrder(setOf(PROVIDED_STRING), PROVIDED_STRING));
+	}
+
+	@Test
+	public void shouldBeFalseWhenSetDoesNotEqualInSizeAndOrderValidVarargs() {
+		assertFalse(ArgonCollections.equalInSizeAndOrder(setOf(PROVIDED_STRING), SECOND_PROVIDED_STRING));
+	}
+	
+	@Test
+	public void shouldHandleNullSetEqualInSizeAndOrder() {
+		assertFalse(ArgonCollections.equalInSizeAndOrder(nullSet(), PROVIDED_STRING, SECOND_PROVIDED_STRING));
+	}
+
+	@Test
+	public void shouldBeTrueWhenEqualInSizeAndOrderBetweenNullSetAndEmptyVarargs() {
+		assertTrue(ArgonCollections.equalInSizeAndOrder(nullSet()));
+	}
+	
+	@Test
+	public void shouldBeTrueWhenEqualInSizeAndOrderBetweenEmptySetAndEmptyVarargs() {
+		assertTrue(ArgonCollections.equalInSizeAndOrder(emptySet()));
+	}
+	
+	@Test
+	public void shouldBeFalseWhenListEqualInSizeAndOrderNullFirstVarargs() {
+		assertFalse(ArgonCollections.equalInSizeAndOrder(listOf(PROVIDED_STRING), nullFirstVararg()));
+	}
+	
+	@Test
+	public void shouldBeTrueWhenListEqualInSizeAndOrderExactMatchVarargs() {
+		assertTrue(ArgonCollections.equalInSizeAndOrder(listOf(PROVIDED_STRING), PROVIDED_STRING));
+	}
+	
+	@Test
+	public void shouldHandleNullListEqualInSizeAndOrder() {
+		assertFalse(ArgonCollections.equalInSizeAndOrder(nullList(), PROVIDED_STRING, SECOND_PROVIDED_STRING));
 	}
 	
 	// Tests for retainAll()

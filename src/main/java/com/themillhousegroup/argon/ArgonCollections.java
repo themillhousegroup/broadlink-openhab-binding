@@ -5,6 +5,7 @@ import static com.themillhousegroup.argon.Argon.hasVarargs;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -76,8 +77,8 @@ public class ArgonCollections {
 	public static <E, C extends Collection<E>> boolean containsAll(C collection, E... others) {
 		boolean hasVarargs = hasVarargs(others);
 
-		if (collection == null) {
-			return !hasVarargs; // The only thing a null collection can match is a zero-length varargs
+		if (collection == null || collection.isEmpty()) {
+			return !hasVarargs; // The only thing an empty collection can match is a zero-length varargs
 		}
 
 		if (hasVarargs) {
@@ -88,6 +89,28 @@ public class ArgonCollections {
 			}
 		}
 		return true;
+	}
+
+	/**
+	 * @return true iff <code>collection</code> contains the same number of elements as <code>others</code> in the <i>exact same order</i>
+	 */
+	public static <E, C extends Collection<E>> boolean equalInSizeAndOrder(C collection, E... others) {
+		boolean hasVarargs = hasVarargs(others);
+
+		if (collection == null || collection.isEmpty()) {
+			return !hasVarargs; // The only thing an empty collection can match is a zero-length varargs
+		}
+			
+		List<E> argsAsList = ArgonCollections.asList(others);
+		
+		if (collection.size() != argsAsList.size()) {
+			return false;
+		}
+		
+		List<E> collectionAsList = new ArrayList<E>(collection.size());
+		collectionAsList.addAll(collection);
+		
+		return collectionAsList.equals(argsAsList);
 	}
 	
 	/**
