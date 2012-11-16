@@ -38,6 +38,11 @@ public interface InjectableArgonCollections {
 	 * @return true if <code>collection</code> contains <i>all</i> of the elements in <code>others</code>
 	 */
 	 <E, C extends Collection<E>> boolean containsAll(C collection, E... others);
+
+	/**
+	 * @return true iff <code>collection</code> contains the same number of elements as <code>others</code> in the <i>exact same order</i>
+	 */
+	<E, C extends Collection<E>> boolean equalInSizeAndOrder(C collection, E... others);
 	
 	/**
 	 * Modifies <code>collection</code>, removing everything except the elements in <code>others</code>.

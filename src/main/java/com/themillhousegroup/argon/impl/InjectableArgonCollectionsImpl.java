@@ -26,6 +26,10 @@ public class InjectableArgonCollectionsImpl implements InjectableArgonCollection
 		return ArgonCollections.containsAll(collection, others);
 	}
 
+	public <E, C extends Collection<E>> boolean equalInSizeAndOrder(C collection, E... others) {
+		return ArgonCollections.equalInSizeAndOrder(collection, others);
+	}
+
 	public <E, C extends Collection<E>> boolean retainAll(C collection,
 			E... others) {
 		return ArgonCollections.retainAll(collection, others);

@@ -347,6 +347,98 @@ public class InjectableArgonCollectionsTest {
 	public void shouldHandleNullListContainsAll() {
 		assertFalse(testInstance.containsAll(nullList(), PROVIDED_STRING, SECOND_PROVIDED_STRING));
 	}
+
+	// Tests for equalInSizeAndOrder()
+
+	@Test
+	public void shouldBeFalseWhenNoVarargsEqualInSizeAndOrder() {
+		assertFalse(testInstance.equalInSizeAndOrder(collectionOf(PROVIDED_STRING)));
+	}
+	
+	@Test
+	public void shouldBeFalseWhenNullVarargsEqualInSizeAndOrder() {
+		assertFalse(testInstance.equalInSizeAndOrder(collectionOf(PROVIDED_STRING), nullVarargs()));
+	}
+	
+	@Test
+	public void shouldBeFalseWhenNullFirstVarargsEqualInSizeAndOrder() {
+		assertFalse(testInstance.equalInSizeAndOrder(collectionOf(PROVIDED_STRING), nullFirstVararg()));
+	}
+	
+	@Test
+	public void shouldBeTrueWhenOneVarargEqualInSizeAndOrder() {
+		assertTrue(testInstance.equalInSizeAndOrder(collectionOf(PROVIDED_STRING), PROVIDED_STRING));
+	}
+	
+	@Test
+	public void shouldBeFalseWhenOneVarargsEqualInSizeAndOrderWithTwoElements() {
+		assertFalse(testInstance.equalInSizeAndOrder(collectionOf(SECOND_PROVIDED_STRING), PROVIDED_STRING, SECOND_PROVIDED_STRING));
+	}
+
+	@Test
+	public void shouldBeFalseWhenTwoVarargsEqualInSizeAndOrderNotSameSize() {
+		assertFalse(testInstance.equalInSizeAndOrder(collectionOf(PROVIDED_STRING, SECOND_PROVIDED_STRING), SECOND_PROVIDED_STRING));
+	}
+	
+	@Test
+	public void shouldBeFalseWhenTwoVarargsEqualInSizeAndOrderSameSizeWrongOrder() {
+		assertFalse(testInstance.equalInSizeAndOrder(collectionOf(PROVIDED_STRING, SECOND_PROVIDED_STRING), SECOND_PROVIDED_STRING, PROVIDED_STRING));
+	}
+	
+	@Test
+	public void shouldBeTrueWhenTwoVarargsEqualInSizeAndOrderSameSizeAndOrder() {
+		assertTrue(testInstance.equalInSizeAndOrder(collectionOf(PROVIDED_STRING, SECOND_PROVIDED_STRING), PROVIDED_STRING, SECOND_PROVIDED_STRING));
+	}
+	
+	@Test
+	public void shouldHandleNullCollectionEqualInSizeAndOrder() {
+		assertFalse(testInstance.equalInSizeAndOrder(nullCollection(), PROVIDED_STRING, SECOND_PROVIDED_STRING));
+	}
+	
+	@Test
+	public void shouldBeFalseWhenSetEqualInSizeAndOrderNullFirstVarargs() {
+		assertFalse(testInstance.equalInSizeAndOrder(setOf(PROVIDED_STRING), nullFirstVararg()));
+	}
+	
+	@Test
+	public void shouldBeTrueWhenSetEqualInSizeAndOrderExactMatchVarargs() {
+		assertTrue(testInstance.equalInSizeAndOrder(setOf(PROVIDED_STRING), PROVIDED_STRING));
+	}
+
+	@Test
+	public void shouldBeFalseWhenSetDoesNotEqualInSizeAndOrderValidVarargs() {
+		assertFalse(testInstance.equalInSizeAndOrder(setOf(PROVIDED_STRING), SECOND_PROVIDED_STRING));
+	}
+	
+	@Test
+	public void shouldHandleNullSetEqualInSizeAndOrder() {
+		assertFalse(testInstance.equalInSizeAndOrder(nullSet(), PROVIDED_STRING, SECOND_PROVIDED_STRING));
+	}
+
+	@Test
+	public void shouldBeTrueWhenEqualInSizeAndOrderBetweenNullSetAndEmptyVarargs() {
+		assertTrue(testInstance.equalInSizeAndOrder(nullSet()));
+	}
+	
+	@Test
+	public void shouldBeTrueWhenEqualInSizeAndOrderBetweenEmptySetAndEmptyVarargs() {
+		assertTrue(testInstance.equalInSizeAndOrder(emptySet()));
+	}
+	
+	@Test
+	public void shouldBeFalseWhenListEqualInSizeAndOrderNullFirstVarargs() {
+		assertFalse(testInstance.equalInSizeAndOrder(listOf(PROVIDED_STRING), nullFirstVararg()));
+	}
+	
+	@Test
+	public void shouldBeTrueWhenListEqualInSizeAndOrderExactMatchVarargs() {
+		assertTrue(testInstance.equalInSizeAndOrder(listOf(PROVIDED_STRING), PROVIDED_STRING));
+	}
+	
+	@Test
+	public void shouldHandleNullListEqualInSizeAndOrder() {
+		assertFalse(testInstance.equalInSizeAndOrder(nullList(), PROVIDED_STRING, SECOND_PROVIDED_STRING));
+	}
 	
 	// Tests for retainAll()
 	
