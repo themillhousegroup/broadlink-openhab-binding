@@ -4,7 +4,7 @@
 
   <groupId>com.themillhousegroup</groupId>
   <artifactId>argon</artifactId>
-  <version>1.1-SNAPSHOT</version>
+  <version>1.1</version>
   <packaging>jar</packaging>
 
   <name>argon</name>
@@ -37,10 +37,14 @@
 
 	<distributionManagement>
 		<snapshotRepository>
-            <id>cloudbees-private-snapshot-repository</id>
-            <name>cloudbees-private-snapshot-repository</name>
-            <url>dav:https://repository-themillhousegroup.forge.cloudbees.com/snapshot/</url>
+      <id>cloudbees-private-snapshot-repository</id>
+      <name>cloudbees-private-snapshot-repository</name>
+      <url>dav:https://repository-themillhousegroup.forge.cloudbees.com/snapshot/</url>
 		</snapshotRepository>
+    <repository>
+      <id>tmg-release</id>
+      <url>dav:https://repository-themillhousegroup.forge.cloudbees.com/release/</url>
+   </repository>
 	</distributionManagement>
 
   <build>
