@@ -39,7 +39,7 @@ Using varargs can make for great code reuse, for example in tests:
         whenEventOfLevelOccurs(EventLevel.CRITICAL);
 
         thenTheseUsersWereNotified(true, tom, dick, harry);
-        thenTheseUsersWereNotNotified(false, bill, ben);
+        thenTheseUsersWereNotified(false, bill, ben);
     }
 
 
