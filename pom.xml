@@ -2,9 +2,9 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.themillhousegroup</groupId>
-  <artifactId>argon</artifactId>
-  <version>1.1</version>
+  <groupId>org.openhab.binding</groupId>
+  <artifactId>broadlink</artifactId>
+  <version>2.0</version>
   <packaging>jar</packaging>
 
   <name>argon</name>
@@ -83,13 +83,5 @@
         </executions>
       </plugin>
     </plugins>
-	<extensions>
-		<!-- Extension required to deploy a snapshot or a release to the CloudBees remote maven repository using Webdav -->
-		<extension>
-			<groupId>org.apache.maven.wagon</groupId>
-			<artifactId>wagon-webdav</artifactId>
-			<version>1.0-beta-2</version>
-		</extension>
-	</extensions>
   </build>
 </project>
