@@ -86,7 +86,6 @@ Recognising the immense popularity of dependency-injection frameworks such as Sp
     varargHelper.numArgs(V... args);
      
 By using Argon in the injected style, you can trivially mock out interactions when writing unit tests.    
-    
 
 Dependencies
 ------------
