@@ -6,6 +6,9 @@ Introduction
 This is building on the work of Cato Sognen, who developed the original Broadlink OpenHAB binding, but 
 never placed his source code into the public domain.
 
+This is ALPHA-quality software at this stage and should not be used for ANY important purpose. Many files are literally the result of decompilation with no attempt to fix style or layout problems.
+
+
 Known Issues
 ------------
 
