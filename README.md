@@ -15,13 +15,13 @@ The original binding worked extremely well but there were a couple of issues rel
 - Fix multiple-device support
 - Remove reliance on IP addresses (the device MAC address is all that is really needed) 
 
-These main aims are based on my own personal needs and from reading of the relevant OpenHAB forum post. As mentioned above, please use Github Issues to log additional bugs/feature requests.
+These main aims are based on my own personal needs and from reading of the [relevant OpenHAB forum post](https://community.openhab.org/t/broadlink-binding-for-rmx-a1-spx-and-mp-any-interest/22768). As mentioned above, please use Github Issues to log additional bugs/feature requests.
 
 
 Credits
 ---------
 
-Cato Sognen
-OpenHAB
-JAD (Java Decompiler)
+- [Cato Sognen](https://community.openhab.org/u/cato_sognen)
+- [OpenHAB](https://www.openhab.org/)
+- [JAD](http://www.javadecompilers.com/jad) (Java Decompiler)
 
